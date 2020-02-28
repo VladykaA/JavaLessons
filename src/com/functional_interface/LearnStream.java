@@ -17,11 +17,11 @@ public class LearnStream {
         Predicate<Man> predicate = m -> m.getAge() < 20;
         Predicate<Man> predicate1 = m -> m.getName().equals("Jack");
 
-        /*List<Man> men1 = men
+        List<Man> men1 = men
                 .stream()
                 .filter(predicate.or(predicate1))
                 .collect(Collectors.toList());
-*/
+
         Stream<Man> manStream = men
                 .stream()
                 .filter(predicate.and(predicate1));
@@ -73,7 +73,7 @@ public class LearnStream {
         
 //                men.stream().map(m -> new Person(m.getAge(), m.getName())).filter(p -> p.getAge() > 20);
 
-        Comparator<Man> comparator = (m1, m2) -> Integer.compare(m1.getAge(), m2.getAge());
+        Comparator<Man> comparator = Comparator.comparingInt(Man::getAge);
 
         Comparator<Man> manComparator = (m1, m2) -> Integer.compare(m1.getName().length(), m2.getName().length());
 
